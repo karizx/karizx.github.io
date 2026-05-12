@@ -102,13 +102,13 @@ header h1 {
     margin-bottom: 10px;
     transition: transform 0.3s ease, filter 0.3s ease;
     cursor: pointer;
-    filter: grayscale(80%); /* Początkowo lekko szare */
+    filter: grayscale(50%); /* Początkowo lekko szare */
 }
 
 /* EFEKTY HOVER DLA WYRÓŻNIENIA */
 .skills-icons li:hover .icon {
     transform: scale(1.15) rotate(5deg);
-    filter: grayscale(0%); /* Kolorowe po najechaniu */
+    filter: grayscale(5%); /* Kolorowe po najechaniu */
 }
 
 .skill-name {
