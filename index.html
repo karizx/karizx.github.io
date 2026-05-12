@@ -1,12 +1,76 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<meta charset="UTF-8">
-<title>Moja Wizytówka</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moja Wizytówka - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+          
 </head>
 <body>
-<header><h1>Moja Wizytówka - Portfolio</h1></header>
-<main>Moja wizytówka...</main>
+    <header><h1>Moja Wizytówka - Portfolio</h1></header>
+    
+    <main>
+        <section id="portfolio-intro" class="section fade-in">
+            <div class="container">
+                <div class="content-wrapper">
+                    <h1 class="typed-text-header">Cześć! Jestem <span class="highlight typed-text"></span><span class="cursor"></span>.</h1>
+                    <p class="lead-text">Skupiam się na dostarczaniu innowacyjnych i efektywnych rozwiązań w technologiach webowych.</p>
+                </div>
+
+                <ul class="skills-icons grid-layout">
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original-wordmark.svg" alt="HTML5" class="icon" title="HTML5 Master - Struktura, Grid, Flexbox">
+                        <span class="skill-name">HTML5</span>
+                    </li>
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original-wordmark.svg" alt="CSS3" class="icon" title="CSS3 Wizard - Animacje, Grid, Responsywność">
+                        <span class="skill-name">CSS3</span>
+                    </li>
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-plain.svg" alt="JS" class="icon" title="JavaScript Master - Development">
+                        <span class="skill-name">JS</span>
+                    </li>
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-plain-wordmark.svg" alt="Git" class="icon" title="Git Guru - Version Control, Flow">
+                        <span class="skill-name">Git</span>
+                    </li>
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" alt="VSC" class="icon" title="VSC Power User - Codings">
+                        <span class="skill-name">VSC</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        </main>
+
+    <script>
+        const text = "programistą JS/CSS";
+        let index = 0;
+        let isDeleting = false;
+        const speed = 100;
+        const element = document.querySelector(".typed-text");
+
+        function type() {
+            element.textContent = text.slice(0, index);
+            if (!isDeleting && index <= text.length) {
+                index++;
+                setTimeout(type, speed);
+            } else if (isDeleting && index >= 0) {
+                element.textContent = text.slice(0, index);
+                index--;
+                setTimeout(type, speed / 2);
+            } else if (!isDeleting && index > text.length) {
+                isDeleting = true;
+                setTimeout(type, 1500); // pauza po napisaniu
+            } else if (isDeleting && index < 0) {
+                isDeleting = false;
+                index = 0;
+                setTimeout(type, speed * 2); // pauza po skasowaniu
+            }
+        }
+        type();
+    </script>
 </body>
 </html>
