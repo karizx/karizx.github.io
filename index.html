@@ -17,6 +17,10 @@
                 <div class="content-wrapper">
                     <h1 class="typed-text-header">Cześć! Jestem <span class="highlight typed-text"></span><span class="cursor"></span>.</h1>
                     <p class="lead-text">Skupiam się na dostarczaniu innowacyjnych i efektywnych rozwiązań w technologiach webowych.</p>
+                    <p class="secondary-text">
+                    Moje doświadczenie obejmuje również zaawansowane programowanie obiektowe w <strong>Javie i Kotlinie</strong>, 
+                    czego owocem są autorskie systemy gier konsolowych RPG.
+                    </p>
                 </div>
 
                 <ul class="skills-icons grid-layout">
@@ -40,37 +44,68 @@
                         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" alt="VSC" class="icon" title="VSC Power User - Codings">
                         <span class="skill-name">VSC</span>
                     </li>
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" alt="Java" class="icon" title="Java - object programing">
+                        <span class="skill-name">Java</span>
+                    </li>
+                    <li>
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kotlin/kotlin-original.svg" alt="Kotlin" class="icon" title="Kotlin - object programing">
+                        <span class="skill-name">Kotlin</span>
+                    </li>
                 </ul>
             </div>
         </section>
         </main>
 
     <script>
-        const text = "programistą JS/CSS";
-        let index = 0;
-        let isDeleting = false;
-        const speed = 100;
-        const element = document.querySelector(".typed-text");
+    // Tablica z hasłami, które będą się zmieniać
+    const phrases = [
+        "programistą JS/CSS",
+        "fanem Javy i Kotlina",
+        "twórcą gier consoleRPG",
+        "pasjonatem architektury OOP"
+    ];
+    
+    let phraseIndex = 0; // Które hasło z tablicy teraz piszemy
+    let charIndex = 0;   // Którą literę danego hasła piszemy
+    let isDeleting = false;
+    const typingSpeed = 100;
+    const element = document.querySelector(".typed-text");
 
-        function type() {
-            element.textContent = text.slice(0, index);
-            if (!isDeleting && index <= text.length) {
-                index++;
-                setTimeout(type, speed);
-            } else if (isDeleting && index >= 0) {
-                element.textContent = text.slice(0, index);
-                index--;
-                setTimeout(type, speed / 2);
-            } else if (!isDeleting && index > text.length) {
-                isDeleting = true;
-                setTimeout(type, 1500); // pauza po napisaniu
-            } else if (isDeleting && index < 0) {
-                isDeleting = false;
-                index = 0;
-                setTimeout(type, speed * 2); // pauza po skasowaniu
-            }
+    function type() {
+        // Pobieramy aktualne pełne hasło
+        const currentPhrase = phrases[phraseIndex];
+
+        if (isDeleting) {
+            // Usuwanie znaków
+            element.textContent = currentPhrase.slice(0, charIndex);
+            charIndex--;
+        } else {
+            // Pisanie znaków
+            element.textContent = currentPhrase.slice(0, charIndex);
+            charIndex++;
         }
-        type();
-    </script>
+
+        // Logika przełączania stanów
+        if (!isDeleting && charIndex > currentPhrase.length) {
+            // Skończył pisać całe hasło -> pauza i zacznij usuwać
+            isDeleting = true;
+            setTimeout(type, 2000); // Dłuższa pauza, żeby zdążyli przeczytać
+        } else if (isDeleting && charIndex < 0) {
+            // Skończył usuwać -> przejdź do następnego hasła
+            isDeleting = false;
+            phraseIndex = (phraseIndex + 1) % phrases.length; // Pętla wraca do początku po ostatnim haśle
+            charIndex = 0;
+            setTimeout(type, 500);
+        } else {
+            // Normalne tempo pisania/usuwania
+            const delta = isDeleting ? typingSpeed / 2 : typingSpeed;
+            setTimeout(type, delta);
+        }
+    }
+
+    // Start
+    document.addEventListener("DOMContentLoaded", type);
+</script>
 </body>
 </html>
