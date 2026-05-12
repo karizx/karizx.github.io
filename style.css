@@ -1,0 +1,139 @@
+/* ZMIENNE GLOBALNE - NOWOCZESNA PALETA */
+:root {
+    --primary: #1a1a1d; /* Ciemne tło */
+    --secondary: #333333; /* Ciemniejszy akcent */
+    --accent: #2e7bff; /* Wyrazisty niebieski */
+    --accent-hover: #4d9eff;
+    --text-dark: #ffffff; /* Jasny tekst na ciemnym tle */
+    --text-muted: #aaaaaa;
+    --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+/* GLOBALNE RESETOWANIE STYLÓW */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--primary);
+    color: var(--text-dark);
+    font-family: var(--font-main);
+    line-height: 1.6;
+}
+
+header {
+    background-color: var(--secondary);
+    padding: 1rem 0;
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+
+header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* STYLOWANIE SEKCJI portfolio-intro */
+#portfolio-intro {
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    max-width: 1000px;
+    width: 100%;
+}
+
+.content-wrapper {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.typed-text-header {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.highlight {
+    color: var(--accent);
+}
+
+.cursor {
+    display: inline-block;
+    width: 2px;
+    height: 3rem;
+    background-color: var(--accent);
+    margin-left: 5px;
+    animation: blink 0.7s infinite;
+}
+
+.lead-text {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 20px auto 0;
+}
+
+/* INTERAKTYWNA SIATKA UMIEJĘTNOŚCI */
+.skills-icons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 30px;
+    list-style: none;
+    padding: 0;
+}
+
+.skills-icons li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.skills-icons .icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    cursor: pointer;
+    filter: grayscale(80%); /* Początkowo lekko szare */
+}
+
+/* EFEKTY HOVER DLA WYRÓŻNIENIA */
+.skills-icons li:hover .icon {
+    transform: scale(1.15) rotate(5deg);
+    filter: grayscale(0%); /* Kolorowe po najechaniu */
+}
+
+.skill-name {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    transition: color 0.3s ease;
+}
+
+.skills-icons li:hover .skill-name {
+    color: var(--text-dark);
+}
+
+/* ANIMACJE */
+@keyframes blink {
+    50% { background-color: transparent; }
+}
+
+/* EFEKT POJAWIENIA SIĘ SEKCJI (ZALECANE DO ZASTOSOWANIA Z JS) */
+.section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
