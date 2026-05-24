@@ -137,3 +137,14 @@ header h1 {
     opacity: 1;
     transform: translateY(0);
 }
+.secondary-text {
+    font-size: 1rem;
+    color: var(--text-muted);
+    max-width: 700px;
+    margin: 15px auto 0;
+    line-height: 1.8;
+}
+
+.secondary-text strong {
+    color: var(--accent); /* Twoje #2e7bff */
+}
